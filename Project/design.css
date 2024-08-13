@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-image: url("Background.jpeg");
+  background-size: cover;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.50);
+  color: white;
+  height: 150px
+}
+
+.logo-container {
+  height:100%;
+  display:flex;
+  align-items: center;
+}
+
+.header .logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.title-container {
+  text-align: left;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 2.75em;
+  marign: 0;
+}
+
+.subtitle {
+  font-size: 1.25em;
+  margin: 0;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile .guest {
+  padding-top: 2%;
+  border-radius: 50%;
+  max-width: 50px;
+  height: auto;
+}
+
+nav {
+  background-color: rgb(217, 217, 217, 0.20);
+  padding: 10px;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 10px 20px;
+    border: 2px solid #0000007a;
+    background-color: #9AC1F9;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: block;
+ 
+}
+
+.nav-item:hover {
+  background-color: #ffffff;
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.homecontent {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Optional: dark background for contrast */
+  overflow: hidden; /* Ensure content stays within the viewport */
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px; /* Adjust the width as needed */
+  height: 500px; /* Adjust the height as needed */
+  overflow: hidden; /* Ensure the image does not overflow */
+}
+
+.homecontent-image {
+  position: absolute;
+  width: 90%; /* Adjust width to fit container */
+  height: 90%; /* Adjust height to fit container */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+}
+
+.homecontent-image.active {
+  opacity: 1;
+}
+button {
+  font-size: 1.2em; /* Increase the font size */
+  padding: 8px 30px; /* Adjust the padding for a larger button */
+  border: none;
+  border-radius: 5px;
+  background-color: #9AC1F9; /* Button background color */
+  color: #000; /* Button text color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+button:hover {
+  background-color: #7a9dff; /* Slightly darker color on hover */
+}
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+}
+.form-group textarea{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height:150px;
+}
+
+#username-group {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#email-group {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#password-group {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+#detailinformation-group {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#addphoto-group {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#dob-group {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#mobilenumber-group {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+#register-group {
+  grid-column: 2;
+  grid-row: 4;
+  text-align: center;
+}
+
+.form-group button {
+  padding: 10px;
+  background-color: #9AC1F9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+  background-color: #ffffff;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.578);
+    color: rgb(0, 0, 0);
+    
+    bottom: 0;
+    width: 100%;
+    height: 40px; /* Adjust the height of the footer */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+
+
+
