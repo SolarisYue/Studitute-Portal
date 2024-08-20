@@ -210,7 +210,7 @@ button:hover {
 
 a{
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 /* Profile container styles */
 .profile-container {
