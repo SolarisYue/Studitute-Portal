@@ -97,6 +97,29 @@ nav {
   color: white;
 }
 
+.result{
+  background-color:rgba(130, 112, 112, 0.655);
+  color: #000;
+}
+.credit{
+  background-color:rgba(130, 112, 112, 0.655);
+  color: #000;
+}
+.fav{
+  background-color:rgba(130, 112, 112, 0.655);
+  color: #000;
+}
+table,th,td{
+  position: relative;
+  margin: auto;
+  font-size: 40px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #5d5555;
+  border-collapse: collapse;
+}
+
+
 .homecontent {
   position: relative;
   width: 100%;
