@@ -29,17 +29,21 @@
         <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
     </ul>
   </nav>
-  <div class="row">
-    <div class="col-12 content" style="text-align: center;">
-      <form method="GET" action="userprofile.html">
-        <h4><label for="Username">User name :</label></h4>
-        <input type="text" id="Username" name="Username"required style="width: 28%; height: 35px;"><br><br>
-          <h4><label for="Password">Password:</label></h4>
-          <input type="text" id="Password" name="Password"required style="width: 28%; height: 35px;"><br><br>
-          <button type="LogIn" id="Button" style="color: 9AC1F9;">Log In</button>
+  <div class="content">
+    <div class="form-container" style="text-align: center;">
+      <form method="GET" action="userprofile.html" class="form-grid">
+        <div class="form-group" id="Username">
+        <label for="Username">User Name:</label>
+        <input type="text" id="Username" name="Username">
+      </div>
+      <div class="form-group" id="Password">
+        <label for="Password">Password:</label>
+        <input type="text" id="Location" name="Location">
+      </div>
+          <button type="Login" id="Login" style="color: black;">Log In</button>
       </form>
-      <p>New User?</p>
-      <p> <a href="signin.html" > Sign Up</a> Now!!</p>
+      <p>New User<br>
+      <a href="signin.html" style="color: black; text-decoration:underline;">Sign Up</a> Now!!</p>
     </div>
   </div>
 
