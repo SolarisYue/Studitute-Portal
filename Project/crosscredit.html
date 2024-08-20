@@ -36,9 +36,19 @@
         <label for="SourceInstitution">Source Institution:</label>
         <input type="text" id="SourceInstitution" name="SourceInstitution">
       </div>
-      <div class="form-group" id="Location">
-        <label for="Location">Location:</label>
-        <input type="text" id="Location" name="Location">
+      <div class="form-group" id="Course">
+        <label for="Course">Course:</label>
+        <input type="text" id="Course" name="Course">
+      </div>
+      <div class="form-group" id="Level">
+        <label for="Level">Level of Education:</label>
+        <input list="levels" name="level">
+        <datalist id="levels">
+          <option value="Short Course/Diploma"></option>
+          <option value="Undergraduate"></option>
+          <option value="Post Graduate"></option>
+          <option value="Research and PHD"></option>
+        </datalist>
       </div>
       <div class="form-group" id="DestinationInstitution">
         <label for="DestinationInstitution">Destination Institution:</label>

@@ -13,4 +13,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set up the interval to change images every 200ms
     setInterval(showNextImage, 3000);
+
+    
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all images with the class 'fav-image'
+    const favImages = document.querySelectorAll('.fav-image');
+
+    // Loop through each image and add a click event listener
+    favImages.forEach(function(img) {
+        img.addEventListener('click', function() {
+            // Check if the current image is 'unfavorite' (FavD.png)
+            if (img.getAttribute('src') === 'FavD.png') {
+                // Change the image source to 'favorite' (FavC.png)
+                img.setAttribute('src', 'FavC.png');
+                img.setAttribute('alt', 'Favorites');
+            } else {
+                // Change the image source back to 'unfavorite' (FavD.png)
+                img.setAttribute('src', 'FavD.png');
+                img.setAttribute('alt', 'Unfavorite');
+            }
+        });
+    });
+});
+
+function saveChanges() {
+    // Simulate saving changes (e.g., form submission, AJAX call, etc.)
+    alert("Changes saved successfully!");
+
+    // Redirect to the user profile page
+    window.location.href = "userprofile.html";
+}

@@ -33,9 +33,9 @@
     <div class="content">
         <div class="form-container">
             <form method="GET" action="userprofile.html" class="form-grid">
-                <div class="form-group" id="username-group">
-                    <label for="Username">User Name:</label>
-                    <input type="text" id="Username" name="Username" required onclick="changeColorofUsername()" onblur="changeBackofUsername()">
+                <div class="form-group" id="name-group">
+                    <label for="Name">Full Name:</label>
+                    <input type="text" id="Name" name="Name" required onclick="changeColorofUsername()" onblur="changeBackofUsername()">
                 </div>
                 <div class="form-group" id="email-group">
                     <label for="EmailAddress">Email Address:</label>
@@ -45,25 +45,20 @@
                     <label for="Password">Password:</label>
                     <input type="password" id="Password" name="Password" required onclick="changeColorofPassword()" onblur="changeBackofPassword()">
                 </div>
+                <div class="form-group">
+                    <label for="ConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                </div>
                 <div class="form-group" id="profileinformation-group">
                     <label for="profileinformation">Short Information for profile:</label>
                     <textarea id="profileinformation" name="profileinformation"></textarea>
                 </div>
-                <div class="form-group" id="dob-group">
-                    <label for="DOB">Date of Birth:</label>
-                    <input type="date" id="DOB" name="DOB" required onclick="changeColorofDOB()" onblur="changeBackofDOB()">
-                </div>
+
                 <div class="form-group" id="mobilenumber-group">
                     <label for="Mobilenumber">Mobile Number:</label>
                     <input type="text" id="Mobilenumber" name="Mobilenumber" required onclick="changeBackofMobilenumber()" onblur="changeBackofMobilenumber()">
                 </div>
-                <div class="form-group share-info">
-                  <input type="checkbox" id="shareInfo" name="shareInfo">
-                  <label for="shareInfo">I agree to share my information</label>
-                </div>
-                
-                
-                
+
                 <div class="form-group" id="register-group">
                     <button type="submit" id="Button">Register</button>
                 </div>
