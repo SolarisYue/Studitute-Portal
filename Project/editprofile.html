@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <title>Edit Profile - Studitute Portal</title>
+</head>
+<body>
+
+    <div class="header">
+        <a href="homepage.html" class="logo-container">
+            <img src="Logo.jpg" alt="Logo" class="logo">
+        </a>
+        <div class="title-container">
+            <div class="title">Studitute Portal</div>
+            <p class="subtitle">Empowering your Educational Journey</p>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="searchpage.html">Search</a></li>
+            <li class="nav-item"><a href="crosscredit.html">Cross Credit</a></li>
+            <li class="nav-item"><a href="fav.html">Favorites</a></li>
+            <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="edit-profile-container">
+        <div class="edit-profile-card">
+            <h2>Edit Profile</h2>
+            <form method="POST" action="saveprofile.html">
+                <div class="form-group">
+                    <label for="Username">User Name:</label>
+                    <input type="text" id="Username" name="Username" value="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="EmailAddress">Email Address:</label>
+                    <input type="email" id="EmailAddress" name="EmailAddress" value="johndoe@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="Mobilenumber">Mobile Number:</label>
+                    <input type="text" id="Mobilenumber" name="Mobilenumber" value="+1234567890" required>
+                </div>
+                <div class="form-group">
+                    <label for="DOB">Date of Birth:</label>
+                    <input type="date" id="DOB" name="DOB" value="1990-01-01" required>
+                </div>
+                <div class="form-group">
+                    <label for="detailinformation">Short Information:</label>
+                    <textarea id="detailinformation" name="detailinformation">Passionate about learning, exploring new technologies, and contributing to the educational community.</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Password">New Password:</label>
+                    <input type="password" id="Password" name="Password">
+                </div>
+                <div class="form-group">
+                    <label for="ConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Studitute Portal: Empowering your Educational Journey</p>
+    </div>
+
+</body>
+</html>

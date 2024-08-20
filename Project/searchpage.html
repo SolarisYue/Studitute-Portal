@@ -29,17 +29,29 @@
         <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
     </ul>
   </nav>
-  <div class="row">
-    <div class="col-12 content" style="text-align: center;">
-      <form method="GET" action="resultofsearch.html">
-        <h4><label for="Institutionname">Institution Name:</label></h4>
-        <input type="textarea" id="Institutionname" name="Institutionname" style="width: 28%; height: 35px;"><br><br>
-          <h4><label for="Location">Location:</label></h4>
-          <input type="textarea" id="Location" name="Location" style="width: 28%; height: 35px;"><br><br>
-          <h4><label for="Course">Course:</label></h4>
-          <input type="textarea" id="Course" name="Course" style="width: 28%; height: 35px;"><br><br>
-          <h4><label for="Duration">Duration:</label></h4>
-          <input type="textarea" id="Duration" name="Duration" style="width: 28%; height: 35px;"><br><br>
+  <div class="content">
+    <div class="form-container" style="text-align: center;">
+      <form method="GET" action="resultofsearch.html" class="form-grid">
+        <div class="form-group" id="Institutionname">
+        <label for="Institutionname">Institution Name:</label>
+        <input type="text" id="Institutionname" name="Institutionname">
+      </div>
+      <div class="form-group" id="Location">
+        <label for="Location">Location:</label>
+        <input type="text" id="Location" name="Location">
+      </div>
+      <div class="form-group" id="Course">
+        <label for="Course">Course:</label>
+        <input type="text" id="Course" name="Course">
+      </div>
+      <div class="form-group" id="Duration">
+        <label for="Duration">Duration:</label>
+        <input type="text" id="Duration" name="Duration">
+      </div>
+      <div class="form-group" id="Pricerange">
+        <label for="Pricerange">Price Range:</label>
+        <input type="text" id="Pricerange" name="Pricerange">
+      </div>
           <button type="SearchInstitution" id="searchinstitution-button" style="color: black;">Search Institution</button>
       </form>
     </div>
