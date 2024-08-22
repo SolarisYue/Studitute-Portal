@@ -43,3 +43,8 @@ function saveChanges() {
     alert("Changes saved successfully!");
 
 }
+function contactUs() {
+    // Simulate contacting us (e.g., form submission, AJAX call, etc.)
+    alert("Your message has been recieved!");
+
+}
