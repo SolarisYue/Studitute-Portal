@@ -42,6 +42,4 @@ function saveChanges() {
     // Simulate saving changes (e.g., form submission, AJAX call, etc.)
     alert("Changes saved successfully!");
 
-    // Redirect to the user profile page
-    window.location.href = "userprofile.html";
 }
