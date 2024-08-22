@@ -31,9 +31,9 @@
   </nav>
   <div class="content">
     <div class="form-container" style="text-align: center;">
-      <form method="GET" action="contactussuccess.html" class="form-grid">
+      <form method="GET" action="contactus.html" class="form-grid">
         <div class="form-group" id="Name">
-        <label for="Name">Name:</label>
+        <label for="Name">Full Name:</label>
         <input type="text" id="Name" name="Name">
       </div>
       <div class="form-group" id="Email">
@@ -44,8 +44,11 @@
         <label for="Message">Message:</label>
         <textarea id="Message" name="Message"></textarea>
       </div>
-          <button type="SearchInstitution" id="searchinstitution-button" style="color: black;">Contact Us</button>
+      <div class="form-group">
+      <button type="submit" onclick="saveChanges()">Save Changes</button>
+    </div>
       </form>
+      <p><a href="homepage.html" style="color: black; text-decoration:underline;">Back to Homepage</a></p>
     </div>
   </div>
   <div class="footer">

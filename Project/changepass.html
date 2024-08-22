@@ -31,7 +31,7 @@
   </nav>
   <div class="content">
     <div class="form-container" style="text-align: center;">
-        <form id="changepassword">
+        <form id="changepassword" action="userprofile.html" method="get">
             <div class="form-group">
                 <label for="OldPassword">Old Password:</label>
                 <input type="password" id="OldPassword" name="OldPassword" required>
@@ -48,6 +48,7 @@
             <button type="submit" onclick="saveChanges()">Save Changes</button>
         </div>
     </form>
+    <p><a href="editprofile.html" style="color: black; text-decoration:underline;">Back to <strong>Edit Profile</strong></a></p>
     </div>
   </div>
 
