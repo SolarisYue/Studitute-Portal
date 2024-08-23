@@ -48,3 +48,9 @@ function contactUs() {
     alert("Your message has been recieved!");
 
 }
+
+function logoutSuccess() {
+    // Simulate contacting us (e.g., form submission, AJAX call, etc.)
+    alert("Logout Successful!");
+
+}
