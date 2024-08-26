@@ -34,17 +34,21 @@
         <form id="changepassword" action="userprofile.html" method="get">
             <div class="form-group">
                 <label for="OldPassword">Old Password:</label>
-                <input type="password" id="OldPassword" name="OldPassword" required>
+                <div class="password-container">
+                  <input type="password" id="Password" name="Password" required>
+                  <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                      <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+                  </span>
+              </div>
             </div><br>
-            <div class="form-group" id="password-group">
-              <label for="Password">Password:</label>
-              <input type="password" id="Password" name="Password" required>
-          </div>
-          <div class="form-group">
-              <label for="ConfirmPassword">Confirm Password:</label>
-              <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
-              <span id="password-error" style="color: red;"></span> <!-- Error message for password mismatch -->
-          </div>
+        <div class="form-group">
+            <label for="NewPassword">New Password:</label>
+            <input type="password" id="NewPassword" name="NewPassword" required>
+        </div><br>
+        <div class="form-group">
+            <label for="ConfirmPassword">Confirm Password:</label>
+            <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+        </div><br>
         <div class="form-group">
           <button type="submit" id="Button" onclick="return checkPasswordMatch()">Change Password</button>
         </div>
