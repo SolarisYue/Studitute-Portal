@@ -43,11 +43,12 @@
                 </div>
                 <div class="form-group" id="password-group">
                     <label for="Password">Password:</label>
-                    <input type="password" id="Password" name="Password" required onclick="changeColorofPassword()" onblur="changeBackofPassword()">
+                    <input type="password" id="Password" name="Password" required>
                 </div>
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
                     <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                    <span id="password-error" style="color: red;"></span> <!-- Error message for password mismatch -->
                 </div>
                 <div class="form-group" id="profileinformation-group">
                     <label for="profileinformation">Short Information for profile:</label>
@@ -68,7 +69,7 @@
                 </div>
 
                 <div class="form-group" id="register-group">
-                    <button type="submit" id="Button">Register</button>
+                    <button type="submit" id="Button" onclick="return checkPasswordMatch()">Register</button>
                 </div>
             </form>
             <p>Already a User? <a href="login.html" style="color: black; text-decoration:underline;">Log In</a> Now!!</p>

@@ -54,3 +54,17 @@ function logoutSuccess() {
     alert("Logout Successful!");
 
 }
+// Function to check if passwords match
+function checkPasswordMatch() {
+    var password = document.getElementById("Password").value;
+    var confirmPassword = document.getElementById("ConfirmPassword").value;
+    var errorElement = document.getElementById("password-error");
+    
+    if (password !== confirmPassword) {
+        errorElement.textContent = "Passwords do not match.";
+        return false; // Prevent form submission
+    } else {
+        errorElement.textContent = ""; // Clear any previous error message
+        return true; // Allow form submission
+    }
+}
