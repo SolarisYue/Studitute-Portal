@@ -68,3 +68,16 @@ function togglePasswordVisibility(fieldId, iconElement) {
         icon.alt = "Show Password";
     }
 }
+function checkPasswordMatch() {
+    const password = document.getElementById('Password').value;
+    const confirmPassword = document.getElementById('ConfirmPassword').value;
+    const messageElement = document.getElementById('password-match-message');
+
+    if (password !== confirmPassword) {
+        messageElement.textContent = "Passwords don't match.";
+        return false; // Prevent form submission
+    } else {
+        messageElement.textContent = ""; // Clear the message if passwords match
+        return true; // Allow form submission
+    }
+}
