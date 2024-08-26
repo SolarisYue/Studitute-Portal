@@ -43,11 +43,21 @@
             </div><br>
         <div class="form-group">
             <label for="NewPassword">New Password:</label>
-            <input type="password" id="NewPassword" name="NewPassword" required>
+            <div class="password-container">
+              <input type="password" id="newPassword" name="newPassword" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', this)">
+                  <img src="ceye-icon.png" alt="Show Password">
+              </span>
+          </div>
         </div><br>
         <div class="form-group">
             <label for="ConfirmPassword">Confirm Password:</label>
-            <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+            <div class="password-container">
+              <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('ConfirmPassword', this)">
+                  <img src="ceye-icon.png" alt="Show Password">
+              </span>
+          </div>
         </div><br>
         <div class="form-group">
           <button type="submit" id="Button" onclick="return checkPasswordMatch()">Change Password</button>

@@ -54,3 +54,17 @@ function logoutSuccess() {
     alert("Logout Successful!");
 
 }
+function togglePasswordVisibility(fieldId, iconElement) {
+    var passwordField = document.getElementById(fieldId);
+    var icon = iconElement.querySelector("img");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.src = "oeye-icon.png"; // Swap to eye-slash icon
+        icon.alt = "Hide Password";
+    } else {
+        passwordField.type = "password";
+        icon.src = "ceye-icon.png"; // Swap back to eye icon
+        icon.alt = "Show Password";
+    }
+}

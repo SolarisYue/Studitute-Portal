@@ -43,11 +43,21 @@
                 </div>
                 <div class="form-group" id="password-group">
                     <label for="Password">Password:</label>
-                    <input type="password" id="Password" name="Password" required onclick="changeColorofPassword()" onblur="changeBackofPassword()">
+                    <div class="password-container">
+                        <input type="password" id="Password" name="Password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                            <img src="ceye-icon.png" alt="Show Password">
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                    <div class="password-container">
+                        <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('ConfirmPassword', this)">
+                            <img src="ceye-icon.png" alt="Show Password">
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group" id="profileinformation-group">
                     <label for="profileinformation">Short Information for profile:</label>
