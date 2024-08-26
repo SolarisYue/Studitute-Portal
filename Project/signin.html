@@ -35,19 +35,29 @@
             <form method="GET" action="userprofile.html" class="form-grid">
                 <div class="form-group" id="name-group">
                     <label for="Name">Full Name:</label>
-                    <input type="text" id="Name" name="Name" required onclick="changeColorofUsername()" onblur="changeBackofUsername()">
+                    <input type="text" id="Name" name="Name" required>
                 </div>
                 <div class="form-group" id="email-group">
                     <label for="EmailAddress">Email Address:</label>
-                    <input type="text" id="EmailAddress" name="EmailAddress" required onclick="changeColorofEmailAddress()" onblur="changeBackofEmailAddress()">
+                    <input type="text" id="EmailAddress" name="EmailAddress" required>
                 </div>
                 <div class="form-group" id="password-group">
                     <label for="Password">Password:</label>
-                    <input type="password" id="Password" name="Password" required onclick="changeColorofPassword()" onblur="changeBackofPassword()">
+                    <div class="password-container">
+                        <input type="password" id="Password" name="Password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                            <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                    <div class="password-container">
+                        <input type="password" id="ConfrimPassword" name="ConfirmPassword" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                            <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group" id="profileinformation-group">
                     <label for="profileinformation">Short Information for profile:</label>
@@ -56,7 +66,7 @@
 
                 <div class="form-group" id="mobilenumber-group">
                     <label for="Mobilenumber">Mobile Number:</label>
-                    <input type="text" id="Mobilenumber" name="Mobilenumber" required onclick="changeBackofMobilenumber()" onblur="changeBackofMobilenumber()">
+                    <input type="text" id="Mobilenumber" name="Mobilenumber" required>
                 </div>
 
                 <!-- Updated Terms and Conditions Checkbox -->

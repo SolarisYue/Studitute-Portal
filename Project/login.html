@@ -34,11 +34,16 @@
       <form method="GET" action="userprofile.html" class="form-grid">
         <div class="form-group" id="Email">
         <label for="Email">Email Address:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
       </div>
-      <div class="form-group" id="Password">
-        <label for="Password">Password:</label>
-        <input type="password" id="Password" name="Password">
+      <div class="form-group" id="Email">
+      <label for="Password">Password:</label>
+    <div class="password-container">
+        <input type="password" id="Password" name="Password" required>
+        <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+            <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+        </span>
+    </div>
       </div>
           <button type="Login" id="Login" style="color: black;">Log In</button>
       </form>

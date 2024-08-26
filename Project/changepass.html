@@ -34,15 +34,30 @@
         <form id="changepassword" action="userprofile.html" method="get">
             <div class="form-group">
                 <label for="OldPassword">Old Password:</label>
-                <input type="password" id="OldPassword" name="OldPassword" required>
+                <div class="password-container">
+                  <input type="password" id="Password" name="Password" required>
+                  <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                      <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+                  </span>
+              </div>
             </div><br>
         <div class="form-group">
             <label for="NewPassword">New Password:</label>
-            <input type="password" id="NewPassword" name="NewPassword" required>
+            <div class="password-container">
+              <input type="password" id="NewPassword" name="NewPassword" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                  <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+              </span>
+          </div>
         </div><br>
         <div class="form-group">
             <label for="ConfirmPassword">Confirm Password:</label>
-            <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+            <div class="password-container">
+              <input type="password" id="ConfirmPassword" name="ConfrimPassword" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                  <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
+              </span>
+          </div>
         </div><br>
         <div class="form-group">
             <button type="submit" onclick="saveChanges()">Change Password</button>
