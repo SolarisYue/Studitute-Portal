@@ -74,7 +74,7 @@ function checkPasswordMatch() {
     const messageElement = document.getElementById('password-match-message');
 
     if (password !== confirmPassword) {
-        messageElement.textContent = "Passwords don't match.";
+        messageElement.textContent = "Passwords doesn't match.";
         return false; // Prevent form submission
     } else {
         messageElement.textContent = ""; // Clear the message if passwords match
