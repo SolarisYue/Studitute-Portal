@@ -69,15 +69,17 @@ function togglePasswordVisibility(fieldId, iconElement) {
     }
 }
 function checkPasswordMatch() {
-    const password = document.getElementById('Password').value;
-    const confirmPassword = document.getElementById('ConfirmPassword').value;
-    const messageElement = document.getElementById('password-match-message');
+        const Password = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("ConfirmPassword").value;
+        const messageElement = document.getElementById("password-match-message");
 
-    if (password !== confirmPassword) {
-        messageElement.textContent = "Passwords doesn't match.";
-        return false; // Prevent form submission
-    } else {
-        messageElement.textContent = ""; // Clear the message if passwords match
-        return true; // Allow form submission
+        if (Password === confirmPassword) {
+            messageElement.style.color = "green";
+            messageElement.textContent = "Password match";
+            return true; // Allow form submission
+        } else {
+            messageElement.style.color = "red";
+            messageElement.textContent = "Password doesn't match";
+            return false; // Prevent form submission
+        }
     }
-}
