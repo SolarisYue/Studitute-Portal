@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     images[currentIndex].classList.add('active');
 
     // Set up the interval to change images every 200ms
-    setInterval(showNextImage, 3000);
+    setInterval(showNextImage, 3500);
 
     
 });
