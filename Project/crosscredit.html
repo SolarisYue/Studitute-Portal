@@ -10,7 +10,7 @@
 <body>
 
   <div class="header">
-    <a href="homepage.html"  class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
+    <a href="homepage.html" class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
     <div class="title-container">
       <div class="title">Studitute Portal</div>
       <p class="subtitle">Empowering your Educational Journey</p>
@@ -32,13 +32,14 @@
   <div class="content">
     <div class="form-container" style="text-align: center;">
       <form method="GET" action="resultofcrosscredit.html" class="form-grid">
-        <div class="form-group" id="SourceInstitution">
+      <div class="form-group" id="SourceInstitution">
         <label for="SourceInstitution">Source Institution:</label>
         <input type="text" id="SourceInstitution" name="SourceInstitution">
       </div>
-      <div class="form-group" id="Source Course">
-        <label for="Source Course">Source Course:</label>
-        <input type="text" id="Source Course" name="Source Course">
+      <div class="form-group" id="SourceUnitOutlines">
+        <label for="SourceUnitOutlines">Unit Outlines from Source Institution:</label>
+        <input type="file" id="SourceUnitOutlines" name="SourceUnitOutlines[]" accept="application/pdf" multiple><br>
+        <small>Please make sure to rename each unit outline to their respective unit names.</small>
       </div>
       <div class="form-group" id="Level">
         <label for="Level">Level of Education:</label>
@@ -49,15 +50,16 @@
           <option value="Post Graduate"></option>
         </datalist>
       </div>
-      <div class="form-group" id="Destination Course">
-        <label for="Destination Course">Destination Course:</label>
-        <input type="text" id="Destination Course" name="Destination Course">
-      </div>
       <div class="form-group" id="DestinationInstitution">
         <label for="DestinationInstitution">Destination Institution:</label>
         <input type="text" id="DestinationInstitution" name="DestinationInstitution">
       </div>
-          <button type="SearchInstitution" id="searchinstitution-button" style="color: black;">Check Your Cross Credit</button>
+      <div class="form-group" id="DestinationUnitOutlines">
+        <label for="DestinationUnitOutlines">Unit Outlines from Destination Institution:</label>
+        <input type="file" id="DestinationUnitOutlines" name="DestinationUnitOutlines[]" accept="application/pdf" multiple><br>
+        <small>Please make sure to rename each unit outline to their respective unit names.</small>
+      </div>
+      <button type="submit" id="searchinstitution-button" style="color: black;">Check Your Cross Credit</button>
       </form>
       <p><a href="homepage.html" style="color: black; text-decoration:underline;">Back to Homepage</a></p>
     </div>
