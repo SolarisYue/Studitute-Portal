@@ -33,33 +33,48 @@
     <div class="form-container" style="text-align: center;">
         <form id="changepassword" action="userprofile.html" method="get">
             <div class="form-group">
-                <label for="OldPassword">Old Password:</label>
+                <label for="OldPassword">
+                    <span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                    Old Password:&nbsp;
+                    <span style="color: red; font-size: 0.9em;">Required</span>
+                </label>
                 <div class="password-container">
-                  <input type="password" id="Password" name="Password" required>
-                  <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
-                      <img src="ceye-icon.png" alt="Show Password" id="toogleIcon">
-                  </span>
-              </div>
+                    <input type="password" id="Password" name="Password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
+                        <img src="ceye-icon.png" alt="Show Password" id="toggleIcon">
+                    </span>
+                </div>
             </div><br>
-        <div class="form-group">
-            <label for="NewPassword">New Password:</label>
-            <div class="password-container">
-              <input type="password" id="newPassword" name="newPassword" required>
-              <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', this)">
-                  <img src="ceye-icon.png" alt="Show Password">
-              </span>
-          </div>
-        </div><br>
-        <div class="form-group">
-            <label for="ConfirmPassword">Confirm Password:</label>
-            <div class="password-container">
-              <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
-              <span class="toggle-password" onclick="togglePasswordVisibility('ConfirmPassword', this)">
-                  <img src="ceye-icon.png" alt="Show Password">
-              </span>
-          </div>
-          <p id="password-match-message" style="color: red;"></p>
-        </div><br>
+
+            <div class="form-group">
+                <label for="NewPassword">
+                    <span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                    New Password:&nbsp;
+                    <span style="color: red; font-size: 0.9em;">    Required</span>
+                </label>
+                <div class="password-container">
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', this)">
+                        <img src="ceye-icon.png" alt="Show Password">
+                    </span>
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label for="ConfirmPassword">
+                    <span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                    Confirm Password:&nbsp;
+                    <span style="color: red; font-size: 0.9em;">Required</span>
+                </label>
+                <div class="password-container">
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('ConfirmPassword', this)">
+                        <img src="ceye-icon.png" alt="Show Password">
+                    </span>
+                </div>
+                <p id="password-match-message" style="color: red;"></p>
+            </div><br>
+
         <div class="form-group">
           <button type="submit" id="Button" onclick="return checkPasswordMatch()">Change Password</button>
         </div>

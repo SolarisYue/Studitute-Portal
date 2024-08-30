@@ -37,8 +37,8 @@
         <input type="text" id="SourceInstitution" name="SourceInstitution">
       </div>
       <div class="form-group" id="SourceUnitOutlines">
-        <label for="SourceUnitOutlines">Unit Outlines from Source Institution:</label>
-        <input type="file" id="SourceUnitOutlines" name="SourceUnitOutlines[]" accept="application/pdf" multiple><br>
+        <label for="SourceUnitOutlines">Unit Outlines from Source Institution:<span style="color: red; font-size: 1.2em; vertical-align: super;">*</span></label>
+        <input type="file" id="SourceUnitOutlines" name="SourceUnitOutlines[]" accept="application/pdf" multiple required><br>
         <small>Please make sure to rename each unit outline to their respective unit names.</small>
       </div>
       <div class="form-group" id="Level">
@@ -55,11 +55,11 @@
         <input type="text" id="DestinationInstitution" name="DestinationInstitution">
       </div>
       <div class="form-group" id="DestinationUnitOutlines">
-        <label for="DestinationUnitOutlines">Unit Outlines from Destination Institution:</label>
-        <input type="file" id="DestinationUnitOutlines" name="DestinationUnitOutlines[]" accept="application/pdf" multiple><br>
+        <label for="DestinationUnitOutlines">Unit Outlines from Destination Institution:<span style="color: red; font-size: 1.2em; vertical-align: super;">*</span></label>
+        <input type="file" id="DestinationUnitOutlines" name="DestinationUnitOutlines[]" accept="application/pdf" multiple required><br>
         <small>Please make sure to rename each unit outline to their respective unit names.</small>
       </div>
-      <button type="submit" id="searchinstitution-button" style="color: black;">Check Your Cross Credit</button>
+      <button type="submit" id="searchinstitution-button" style="color: black;">Check Cross-Credit</button>
       </form>
       <p><a href="homepage.html" style="color: black; text-decoration:underline;">Back to Homepage</a></p>
     </div>
