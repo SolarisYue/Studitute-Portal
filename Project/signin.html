@@ -34,15 +34,21 @@
         <div class="form-container">
             <form method="GET" action="userprofile.html" class="form-grid" onsubmit="return checkPasswordMatch()">
                 <div class="form-group" id="name-group">
-                    <label for="Name">Full Name:</label>
+                    <label for="Name"><span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                        Full Name&nbsp;
+                        <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label></label>
                     <input type="text" id="Name" name="Name" required>
                 </div>
                 <div class="form-group" id="email-group">
-                    <label for="EmailAddress">Email Address:</label>
+                    <label for="EmailAddress"><span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                        Email Address&nbsp;
+                        <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label></label>
                     <input type="email" id="EmailAddress" name="EmailAddress" required>
                 </div>
                 <div class="form-group" id="password">
-                    <label for="Password">Password:</label>
+                    <label for="Password"><span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                        Password&nbsp;
+                        <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label></label>
                     <div class="password-container">
                         <input type="password" id="newPassword" name="newPassword" required>
                         <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', this)">
@@ -51,7 +57,9 @@
                     </div>
                 </div>
                 <div class="form-group" id="confirm-password-group">
-                    <label for="ConfirmPassword">Confirm Password:</label>
+                    <label for="ConfirmPassword"><span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                       Confirm Password&nbsp;
+                        <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label></label>
                     <div class="password-container">
                         <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
                         <span class="toggle-password" onclick="togglePasswordVisibility('ConfirmPassword', this)">
@@ -66,7 +74,9 @@
                 </div>
 
                 <div class="form-group" id="mobilenumber-group">
-                    <label for="Mobilenumber">Mobile Number:</label>
+                    <label for="Mobilenumber"><span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+                        Mobile Number&nbsp;
+                        <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label></label>
                     <input type="text" id="Mobilenumber" name="Mobilenumber" required>
                 </div>
 

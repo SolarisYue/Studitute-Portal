@@ -33,11 +33,15 @@
     <div class="form-container" style="text-align: center;">
       <form method="GET" action="userprofile.html" class="form-grid">
         <div class="form-group" id="Email">
-        <label for="Email">Email Address:</label>
-        <input type="email" id="email" name="email">
+        <label for="Email"> <span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+          Email Address&nbsp;
+          <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label>
+        <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group" id="password-group">
-        <label for="Password">Password:</label>
+        <label for="Password"> <span style="color: red; font-size: 1.2em; vertical-align: super;">*</span>
+          Password&nbsp;
+          <span style="color: red; font-size: 0.9em;"><sup>Required</sup></span></label>
         <div class="password-container">
           <input type="password" id="Password" name="Password" required>
           <span class="toggle-password" onclick="togglePasswordVisibility('Password', this)">
