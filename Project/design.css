@@ -143,7 +143,6 @@ nav {
   background-color: #d7e2f1;/* Slightly opaque white background */
   color: #000000;
   padding: 20px; /* Add some padding around the table */
-  border-radius: 10px; /* Rounded corners for the result section */
   border: 2px solid #ddd; /* Light border around the result section */
 }
 
@@ -151,7 +150,6 @@ nav {
     background-color: #d7e2f1;/* Slightly opaque white background */
     color: #000000;
     padding: 20px; /* Add some padding around the table */
-    border-radius: 10px; /* Rounded corners for the credit section */
     border: 2px solid #ddd; /* Light border around the credit section */
 }
 
@@ -159,9 +157,9 @@ nav {
   background-color: #d7e2f1;/* Slightly opaque white background */
     color: #000000;
     padding: 20px; /* Add some padding around the table */
-    border-radius: 10px; /* Rounded corners for the fav section */
     border: 2px solid #ddd; /* Light border around the fav section */
 }
+
 
 /* Table styling */
 table {
@@ -484,7 +482,7 @@ a {
   border: 1px solid #ddd; /* Maintaining a subtle border */
   padding: 15px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
   border-radius: 5px;
   
 }
