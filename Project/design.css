@@ -19,45 +19,7 @@ body {
   background-color: rgba(0, 0, 0, 0.50);
   color: white;
   height: 150px;
-}
-.institution-details {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.institution-details h1,
-.institution-details h2,
-.institution-details h3 {
-  margin-top: 0;
-}
-
-.institution-details h1 {
-  font-size: 2.5em;
-}
-
-.institution-details h2 {
-  font-size: 2em;
-  margin-top: 20px;
-}
-
-.institution-details .program,
-.institution-details .campus {
-  margin-bottom: 20px;
-}
-
-.institution-details .program h3,
-.institution-details .campus h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.institution-details p {
-  font-size: 1.1em;
-  line-height: 1.6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -91,18 +53,24 @@ body {
   text-align: center;
 }
 
-.profile .guest {
-  padding-top: 2%;
+.profile .guest,
+.user-initials {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  max-width: 50px;
-  height: auto;
+  background-color: #9AC1F9;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
 }
 
 nav {
   background-color: rgba(217, 217, 217, 0.20);
   padding: 10px;
 }
-
 
 .nav-list {
   list-style-type: none;
@@ -139,27 +107,12 @@ nav {
   color: rgb(0, 0, 0);
 }
 
-.result {
-  background-color: #d7e2f1;/* Slightly opaque white background */
+.result, .credit, .fav {
+  background-color: #d7e2f1;
   color: #000000;
-  padding: 20px; /* Add some padding around the table */
-  border: 2px solid #ddd; /* Light border around the result section */
+  padding: 20px;
+  border: 2px solid #ddd;
 }
-
-.credit{
-    background-color: #d7e2f1;/* Slightly opaque white background */
-    color: #000000;
-    padding: 20px; /* Add some padding around the table */
-    border: 2px solid #ddd; /* Light border around the credit section */
-}
-
-.fav{
-  background-color: #d7e2f1;/* Slightly opaque white background */
-    color: #000000;
-    padding: 20px; /* Add some padding around the table */
-    border: 2px solid #ddd; /* Light border around the fav section */
-}
-
 
 /* Table styling */
 table {
@@ -168,8 +121,8 @@ table {
   margin-top: 20px;
   background-color: aliceblue;
   border-radius: 10px;
-  overflow: hidden; /* Ensures the border-radius is applied properly */
-  border: 1px solid #000; /* Border around the table */
+  overflow: hidden;
+  border: 1px solid #000;
 }
 
 table th, table td {
@@ -180,7 +133,6 @@ table th, table td {
   border-right: 1.25px solid #000000;
 }
 
-/* Specific styles for the favorite icon td */
 table td img.fav-image {
   width: 100%;
   height: auto;
@@ -189,7 +141,7 @@ table td img.fav-image {
 }
 
 table td.fav-icon {
-  width: 50px; /* Adjust this to match the size of the favorite icon */
+  width: 50px;
   height: 50px;
   padding: 0;
   text-align: center;
@@ -205,15 +157,17 @@ table tr:hover {
   background-color: #f1f1f1;
 }
 
+/* Home content styling */
 .homecontent {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: auto;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5); /* Optional: dark background for contrast */
-  overflow: hidden; /* Ensure content stays within the viewport */
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .content-container {
@@ -221,39 +175,41 @@ table tr:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1000px; /* Adjust the width as needed */
-  height: 500px; /* Adjust the height as needed */
-  overflow: hidden; /* Ensure the image does not overflow */
+  width: 1000px;
+  height: 500px;
+  overflow: hidden;
 }
 
 .homecontent-image {
   position: absolute;
-  width: 90%; /* Adjust width to fit container */
-  height: 90%; /* Adjust height to fit container */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+  transition: opacity 1s ease-in-out;
 }
 
 .homecontent-image.active {
   opacity: 1;
 }
 
+/* Button styling */
 button {
-  font-size: 1.2em; /* Increase the font size */
-  padding: 8px 30px; /* Adjust the padding for a larger button */
+  font-size: 1.2em;
+  padding: 8px 30px;
   border: none;
   border-radius: 5px;
-  background-color: #9AC1F9; /* Button background color */
-  color: #000; /* Button text color */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  background-color: #9AC1F9;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #7a9dff; /* Slightly darker color on hover */
+  background-color: #7a9dff;
 }
 
+/* Form styling */
 .form-container {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 30px;
@@ -262,7 +218,7 @@ button:hover {
   max-width: 600px;
   width: 100%;
   color: #000;
-  margin: auto; /* Center the form container horizontally */
+  margin: auto;
 }
 
 .form-grid {
@@ -284,12 +240,12 @@ button:hover {
 .share-info {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the content horizontally */
-  margin-top: 15px; /* Add space above */
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .share-info input[type="checkbox"] {
-  margin-right: 10px; /* Space between checkbox and label text */
+  margin-right: 10px;
 }
 
 .form-group input, .form-group textarea {
@@ -299,23 +255,9 @@ button:hover {
 }
 
 .form-group textarea {
-  height: 200px; /* Increased height for the textarea */
+  height: 200px;
 }
 
-.form-group button {
-  font-size: 1.2em;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #9AC1F9;
-  color: #000;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.form-group button:hover {
-  background-color: #7a9dff;
-}
 .password-container {
   position: relative;
   display: flex;
@@ -324,7 +266,7 @@ button:hover {
 
 .password-container input {
   flex-grow: 1;
-  padding-right: 30px; /* Ensure enough padding to avoid icon overlap */
+  padding-right: 30px;
 }
 
 .toggle-password {
@@ -336,13 +278,6 @@ button:hover {
 .toggle-password img {
   width: 20px;
   height: 20px;
-}
-
-
-
-a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
 }
 
 /* Profile container styles */
@@ -463,6 +398,8 @@ a {
 .edit-profile-card .form-group button:hover {
   background-color: #7a9dff;
 }
+
+/* Institution Details Styling */
 .institution-details {
   max-width: 1200px;
   margin: 20px auto;
@@ -476,7 +413,6 @@ a {
   color: #2C3E50; /* Dark blue for headers */
 }
 
-
 .program, .campus {
   background-color: #f1f1ff; /* Light blue background for a subtle look */
   border: 1px solid #ddd; /* Maintaining a subtle border */
@@ -484,9 +420,7 @@ a {
   margin-bottom: 20px;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
   border-radius: 5px;
-  
 }
-
 
 .program h3, .campus h3 {
   margin-bottom: 10px;
@@ -496,7 +430,6 @@ a {
   line-height: 1.6;
   text-align: left; /* Aligns text to the left */
 }
-
 
 /* Footer styling */
 .footer {
