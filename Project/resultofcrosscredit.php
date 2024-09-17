@@ -1,16 +1,15 @@
 <?php
 session_start(); // Start the session.
 
-// Check if the user is logged in, using a session variable we've set at login.
+
+// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-  $_SESSION['login_message'] = 'Please log in to access further';
-  header('Location: login.php');
-  exit();
-
+    $_SESSION['login_message'] = 'Please log in to access further';
+    header('Location: login.php');
+    exit();
 }
-
-// If the user is logged in, continue with the rest of the code for the page.
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,15 +17,16 @@ if (!isset($_SESSION['user_id'])) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="design.css">
-    <script src="mammoth.browser.min.js"></script> <!-- Mammoth.js for .docx handling -->
-    <link rel="icon" type="image/png" href="Favicon.png">
-    <title>Check Cross Credits - Studitute Portal</title>
+<link rel="icon" type="image/png" href="Favicon.png">
+<title>Check Cross Credits - Studitute Portal</title>
 </head>
 <body>
 
+
 <?php include 'header.php'; ?>
 
-<div class="container">
+
+<div class="content credit">
     <h1>Document Comparison Results</h1>
     <table id="resultsTable">
         <thead>
@@ -39,15 +39,22 @@ if (!isset($_SESSION['user_id'])) {
         <tbody>
             <!-- Results will be inserted here by JavaScript -->
         </tbody>
-    </table>
+    </table><br>
     <button onclick="goBack()">Go Back</button>
 </div>
 
 
 <?php include 'footer.php'; ?>
 
-<!-- Link to result.js -->
+
+<!-- Place result.js at the bottom, after the DOM has loaded -->
 <script src="result.js"></script>
+
 
 </body>
 </html>
+
+
+
+
+

@@ -1,16 +1,18 @@
 <?php
 session_start(); // Start the session.
 
+
 // Check if the user is logged in, using a session variable we've set at login.
 if (!isset($_SESSION['user_id'])) {
   $_SESSION['login_message'] = 'Please log in to access further';
   header('Location: login.php');
   exit();
-
 }
+
 
 // If the user is logged in, continue with the rest of the code for the page.
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,20 +20,21 @@ if (!isset($_SESSION['user_id'])) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="design.css">
-    <script src="mammoth.browser.min.js"></script> <!-- Mammoth.js for .docx handling -->
-    <link rel="icon" type="image/png" href="Favicon.png">
-    <title>Check Cross Credits - Studitute Portal</title>
+<link rel="icon" type="image/png" href="Favicon.png">
+<title>Check Cross Credits - Studitute Portal</title>
 </head>
 <body>
-  
+
+
 <?php include 'header.php'; ?>
+
 
 <div class="content">
     <div class="form-container" style="text-align: center;">
         <form id="crossCreditForm" method="POST" enctype="multipart/form-data" class="form-grid">
             <div class="form-group" id="SourceInstitution">
                 <label for="SourceInstitution">Source Institution:</label>
-                <input type="text" id="SourceInstitution" name="SourceInstitution">
+                <input type="text" id="SourceInstitutionName" >
             </div>
             <div class="form-group" id="SourceUnitOutlines">
                 <label for="SourceUnitOutlines">Unit Outlines from Source Institution<span style="color: red;">*</span></label>
@@ -49,7 +52,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="form-group" id="DestinationInstitution">
                 <label for="DestinationInstitution">Destination Institution:</label>
-                <input type="text" id="DestinationInstitution" name="DestinationInstitution">
+                <input type="text" id="DestinationInstitutionName">
             </div>
             <div class="form-group" id="DestinationUnitOutlines">
                 <label for="DestinationUnitOutlines">Unit Outlines from Destination Institution<span style="color: red;">*</span></label>
@@ -62,10 +65,24 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
+
 <?php include 'footer.php'; ?>
 
+
+ <!-- Include Mammoth.js from CDN -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 <!-- Link to crosscredit.js -->
 <script src="crosscredit.js"></script>
 
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
