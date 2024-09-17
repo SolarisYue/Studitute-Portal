@@ -1,70 +1,53 @@
+<?php
+session_start(); // Start the session.
+
+// Check if the user is logged in, using a session variable we've set at login.
+if (!isset($_SESSION['user_id'])) {
+  $_SESSION['login_message'] = 'Please log in to access further';
+  header('Location: login.php');
+  exit();
+
+}
+
+// If the user is logged in, continue with the rest of the code for the page.
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="design.css">
-<script src="mywebscript.js"></script>
-<link rel="icon" type="image/png" href="Favicon.png">
-<title>Results of Cross Credit Check - Studitute Portal</title>
+    <script src="mammoth.browser.min.js"></script> <!-- Mammoth.js for .docx handling -->
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <title>Check Cross Credits - Studitute Portal</title>
 </head>
 <body>
 
-  <div class="header">
-    <a href="homepage.html"  class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
-    <div class="title-container">
-      <div class="title">Studitute Portal</div>
-      <p class="subtitle">Empowering your Educational Journey</p>
-    </div>
-    <div class="profile"><a href="login.html">
-      <img class="guest" src="Guest.jpg" alt="Guest pic"><br>
-      <h3>Log In</h3></a>
-    </div>
-  </div>
+<?php include 'header.php'; ?>
 
-  <nav>
-    <ul class="nav-list">
-        <li class="nav-item"><a href="searchpage.html">Search</a></li>
-        <li class="nav-item"><a href="crosscredit.html">Cross Credit</a></li>
-        <li class="nav-item"><a href="fav.html">Favourites</a></li>
-        <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-  
-  <div class="content credit">
-    <h1> Available cross credits</h1>
-    <h2> Upon request these are the possible units that can be cross-credited </h2>
-    <table style="background-color: aliceblue;">
-      <tr>
-        <th>Units of Source Institution</th>
-        <th>Units of Destination Institution</th>
-        <th> Reason for possible cross-credit</th>
-      </tr>
-      <tr>
-        <td>Web Development</td>
-        <td>Web Application</td>
-        <td>The unit learning objectives  of source institution and destination institution are similar.</td>
-      </tr>
-      <tr>
-        <td>Network and Cyber Security</td>
-        <td>Cyber security</td>
-        <td>The unit learning objectives  of source institution and destination institution are similar.</td>
-      </tr>
-      <tr>
-        <td>Introduction to Programming</td>
-        <td>Programming</td>
-        <td>The unit learning objectives  of source institution and destination institution are similar.</td>
-      </tr>
-      <tr>
-        <td>Networking and CISCO</td>
-        <td>Networking</td>
-        <td>The unit learning objectives  of source institution and destination institution are similar.</td>
-      </tr>
+<div class="container">
+    <h1>Document Comparison Results</h1>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th id="headerGroup1">Group 1 File</th>
+                <th id="headerGroup2">Group 2 File</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Results will be inserted here by JavaScript -->
+        </tbody>
     </table>
-    <p><a href="crosscredit.html" style="color: black; text-decoration:underline;">Back to <strong>Check Cross Credit</strong></a></p>
-  </div>
-  <div class="footer">
-    <p>@Copyright- Studitute Portal: Empowering your Educational Journey</p>
-  </div>
+    <button onclick="goBack()">Go Back</button>
+</div>
+
+
+<?php include 'footer.php'; ?>
+
+<!-- Link to result.js -->
+<script src="result.js"></script>
 
 </body>
 </html>
