@@ -35,9 +35,9 @@ session_start(); // Starts the session to ensure user is logged in, otherwise re
                 <label for="Level">Level of Education:</label>
                 <input list="levels" name="level">
                 <datalist id="levels">
-                    <option value="Short Course/Diploma"></option>
-                    <option value="Undergraduate"></option>
-                    <option value="Post Graduate"></option>
+                    <option value="Short Course/Diploma/ Pre-Bachelor"></option>
+                    <option value="Undergraduate/ Bachelor"></option>
+                    <option value="Post Graduate/ Masters"></option>
                 </datalist>
             </div>
             <div class="form-group" id="Duration">

@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="design.css">
 <link rel="icon" type="image/png" href="Favicon.png">
-<title>Check Cross Credits - Studitute Portal</title>
+<title>Result of Cross Credits - Studitute Portal</title>
 </head>
 <body>
 
@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 <div class="content credit">
-    <h1>Document Comparison Results</h1>
+    <h1>Result for Cross Credit check:</h1>
     <table id="resultsTable">
         <thead>
             <tr>
