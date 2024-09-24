@@ -1,6 +1,10 @@
 <?php
 session_start(); // Starts the session to ensure user is logged in, otherwise redirect
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirect to login if the user is not logged in
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,14 +49,15 @@ session_start(); // Starts the session to ensure user is logged in, otherwise re
                 <input type="text" id="Duration" name="Duration">
             </div>
             <div class="form-group" id="feerange">
-                <label for="feerange">Tuition Fee Range:</label>
-                <div class="fee-range">
-                    <span>Min</span>
-                    <input type="number" class="input-min">
-                    <span>Max</span>
-                    <input type="number" class="input-max">
-                </div>
+    <label for="feerange">Tuition Fee Range:</label>
+            <div class="fee-range">
+            <span>Min</span>
+            <input type="number" class="input-min" name="fee_min">
+             <span>Max</span>
+              <input type="number" class="input-max" name="fee_max">
             </div>
+            </div>
+
             <button type="submit" id="searchinstitution-button" style="color: black;">Search Institution</button>
         </form>
         <p><a href="homepage.php" style="color: black; text-decoration:underline;">Back to Homepage</a></p>

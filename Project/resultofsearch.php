@@ -1,95 +1,142 @@
+<?php
+// Ensure the session is started and the user is logged in
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Include your database connection
+include 'database.php';
+
+// Get search parameters from the form submission
+$institution_name = $_GET['Institutionname'] ?? '';
+$location = $_GET['Location'] ?? '';
+$course = $_GET['Course'] ?? '';
+$level = $_GET['level'] ?? '';
+$duration = $_GET['Duration'] ?? '';
+$min_fee = $_GET['feerange_min'] ?? '';
+$max_fee = $_GET['feerange_max'] ?? '';
+
+// Build the query dynamically based on user input
+$query = "SELECT institution_id, institution_name, tution_fee, locations, duration, course_name, course_level 
+          FROM database_institution 
+          WHERE 1=1";
+
+// Add search filters if they exist
+if (!empty($institution_name)) {
+    $query .= " AND institution_name LIKE :institution_name";
+}
+if (!empty($location)) {
+    $query .= " AND locations LIKE :location";
+}
+if (!empty($course)) {
+    $query .= " AND course_name LIKE :course";
+}
+if (!empty($level)) {
+    $query .= " AND course_level = :level";
+}
+if (!empty($duration)) {
+    $query .= " AND duration = :duration";
+}
+if (!empty($min_fee) && !empty($max_fee)) {
+    $query .= " AND tution_fee BETWEEN :min_fee AND :max_fee";
+}
+
+// Prepare the query
+$stmt = $pdo->prepare($query);
+
+// Bind the parameters
+if (!empty($institution_name)) {
+    $stmt->bindValue(':institution_name', '%' . $institution_name . '%');
+}
+if (!empty($location)) {
+    $stmt->bindValue(':location', '%' . $location . '%');
+}
+if (!empty($course)) {
+    $stmt->bindValue(':course', '%' . $course . '%');
+}
+if (!empty($level)) {
+    $stmt->bindValue(':level', $level);
+}
+if (!empty($duration)) {
+    $stmt->bindValue(':duration', $duration);
+}
+if (!empty($min_fee) && !empty($max_fee)) {
+    $stmt->bindValue(':min_fee', $min_fee);
+    $stmt->bindValue(':max_fee', $max_fee);
+}
+
+// Execute the query
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="design.css">
-<script src="mywebscript.js"></script>
-<link rel="icon" type="image/png" href="Favicon.png">
-<title>Result of Searching Institution - Studitute Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <script src="mywebscript.js"></script>
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <title>Result of Searching Institution - Studitute Portal</title>
 </head>
 <body>
 
-  <div class="header">
-    <a href="homepage.html"  class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
-    <div class="title-container">
-      <div class="title">Studitute Portal</div>
-      <p class="subtitle">Empowering your Educational Journey</p>
-    </div>
-    <div class="profile"><a href="login.html">
-      <img class="guest" src="Guest.jpg" alt="Guest pic"><br>
-      <h3>Log In</h3></a>
-    </div>
-  </div>
+<?php include 'header.php'; // Include the header file ?>
 
-  <nav>
-    <ul class="nav-list">
-        <li class="nav-item"><a href="searchpage.html">Search</a></li>
-        <li class="nav-item"><a href="crosscredit.html">Cross Credit</a></li>
-        <li class="nav-item"><a href="fav.html">Favourites</a></li>
-        <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-  
-
-  <div class="content result">
+<div class="content result">
     <h1>Search Results</h1>
-    <table style="background-color: aliceblue">
-      <tr>
-        <th>S.N</th>
-        <th> Institution Name</th>
-        <th>Tution Fee</th>
-        <th> Location</th>
-        <th> Duration</th>
-        <th>Course</th>
-        <th>Level of Education</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td><a href="detailsofinst.html" style="color:black">Canberra Institute of Technology</a></td>
-        <td>11,500</td>
-        <td>Canberra</td>
-        <td>1.5 Years</td>
-        <td>Diploma in Nursing</td>
-        <td>Short Course/Diploma</td>
-        <td class="fav-icon"><img class="fav-image" src="FavD.png" alt="Unfavorite" ></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><a href="detailsofinst.html" style="color:black">University of Canberra</a></td>
-        <td>15,500</td>
-        <td>Canberra</td>
-        <td>3 Years</td>
-        <td>Bachelor in Nursing</td>
-        <td>Undergraduate</td>
-        <td class="fav-icon"><img class="fav-image" src="FavD.png" alt="Unfavorite"></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><a href="detailsofinst.html" style="color:black">Victoria university</a></td>
-        <td>14,000</td>
-        <td>Melbourne</td>
-        <td>3 Years</td>
-        <td>Bachelor of Information Technology</td>
-        <td>Undergraduate</td>
-        <td class="fav-icon"><img class="fav-image" src="FavD.png" alt="Unfavorite"></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><a href="detailsofinst.html" style="color:black">Charles Darwin university</a></td>
-        <td>16,500</td>
-        <td>Sydney</td>
-        <td>2 Years</td>
-        <td>Master in Nursing</td>
-        <td>Post Graduate</td>
-        <td class="fav-icon"><img class="fav-image" src="FavD.png" alt="Unfavorite"></td>
-      </tr>
+    <table style="background-color: aliceblue;">
+        <tr>
+            <th>S.N</th>
+            <th>Institution Name</th>
+            <th>Tuition Fee</th>
+            <th>Location</th>
+            <th>Duration</th>
+            <th>Course</th>
+            <th>Level of Education</th>
+            <th>Favorite</th>
+        </tr>
+        <?php
+        if ($results && count($results) > 0) {
+            $i = 1;
+            foreach ($results as $result) {
+                // Ensure 'institution_id' is accessed correctly from the $result array
+                $institution_id = htmlspecialchars($result['institution_id']);
+                $institution_name = htmlspecialchars($result['institution_name']);
+                $tution_fee = htmlspecialchars($result['tution_fee']);
+                $locations = htmlspecialchars($result['locations']);
+                $duration = htmlspecialchars($result['duration']);
+                $course_name = htmlspecialchars($result['course_name']);
+                $course_level = htmlspecialchars($result['course_level']);
+                
+                echo "<tr>
+                    <td>{$i}</td>
+                    <td><a href=\"detailsofinst.php?id={$institution_id}\" style=\"color:black\">{$institution_name}</a></td>
+                    <td>{$tution_fee}</td>
+                    <td>{$locations}</td>
+                    <td>{$duration}</td>
+                    <td>{$course_name}</td>
+                    <td>{$course_level}</td>
+                    <td class=\"fav-icon\">
+                        <button class=\"fav-btn\" data-id=\"{$institution_id}\" id=\"fav-btn-{$institution_id}\">
+                            <img class=\"fav-image\" src=\"FavD.png\" alt=\"Favorite\">
+                        </button>
+                    </td>
+                </tr>";
+                $i++;
+            }
+        } else {
+            echo "<tr><td colspan=\"8\">No results found.</td></tr>";
+        }
+        ?>
     </table>
-    <p><a href="searchpage.html" style="color: black; text-decoration:underline;">Back to <strong>Search</strong></a></p>
-  </div>
+    <p><a href="searchpage.php" style="color: black; text-decoration:underline;">Back to <strong>Search</strong></a></p>
+</div>
 
-  <div class="footer">
-    <p>@Copyright- Studitute Portal: Empowering your Educational Journey</p>
-  </div>
+<?php include 'footer.php'; // Include the footer file ?>
+
 </body>
 </html>
