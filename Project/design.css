@@ -208,6 +208,30 @@ button {
 button:hover {
   background-color: #7a9dff;
 }
+.fav-btn {
+  border: none;
+  background-color: transparent; /* Initial background transparent */
+  cursor: pointer;
+  padding: 0;
+}
+
+.fav-btn img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+/* You can customize the hover effect */
+.fav-btn:hover {
+  opacity: 0.8;
+}
+
+/* Optional: If you want to add more styling when favorited */
+.fav-btn.favorited {
+  background-color: transparent !important;
+  border: 2px solid #9AC1F9; /* You can add a border or other effect */
+}
+
 
 /* Form styling */
 .form-container {
