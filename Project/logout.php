@@ -19,7 +19,6 @@ session_destroy();
 
 // Prepare JavaScript for redirect and alert
 $script = "<script>
-           alert('Logged out Successfully');
            window.location.href='homepage.php';
            </script>";
 

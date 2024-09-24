@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for the homepage image slider
     const images = document.querySelectorAll('.homecontent-image');
     let currentIndex = 0;
 
@@ -11,49 +12,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with the first image visible
     images[currentIndex].classList.add('active');
 
-    // Set up the interval to change images every 200ms
+    // Set up the interval to change images every 3.5 seconds
     setInterval(showNextImage, 3500);
-
-    
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all images with the class 'fav-image'
-    const favImages = document.querySelectorAll('.fav-image');
-
-    // Loop through each image and add a click event listener
-    favImages.forEach(function(img) {
-        img.addEventListener('click', function() {
-            // Check if the current image is 'unfavorite' (FavD.png)
-            if (img.getAttribute('src') === 'FavD.png') {
-                // Change the image source to 'favorite' (FavC.png)
-                img.setAttribute('src', 'FavC.png');
-                img.setAttribute('alt', 'Favorites');
-            } else {
-                // Change the image source back to 'unfavorite' (FavD.png)
-                img.setAttribute('src', 'FavD.png');
-                img.setAttribute('alt', 'Unfavorite');
-            }
-        });
-    });
-});
-
+// Function to simulate saving profile changes
 function saveChanges() {
-    // Simulate saving changes (e.g., form submission, AJAX call, etc.)
     alert("Changes saved successfully!");
-
 }
+
+// Function to simulate contacting the portal (e.g., for a contact form submission)
 function contactUs() {
-    // Simulate contacting us (e.g., form submission, AJAX call, etc.)
-    alert("Your message has been recieved!");
-
+    alert("Your message has been received!");
 }
 
+// Function to simulate a successful logout
 function logoutSuccess() {
-    // Simulate contacting us (e.g., form submission, AJAX call, etc.)
     alert("Logout Successful!");
-
 }
+
+// Function to toggle password visibility in the form
 function togglePasswordVisibility(fieldId, iconElement) {
     var passwordField = document.getElementById(fieldId);
     var icon = iconElement.querySelector("img");
@@ -68,18 +46,20 @@ function togglePasswordVisibility(fieldId, iconElement) {
         icon.alt = "Show Password";
     }
 }
-function checkPasswordMatch() {
-        const Password = document.getElementById("newPassword").value;
-        const confirmPassword = document.getElementById("ConfirmPassword").value;
-        const messageElement = document.getElementById("password-match-message");
 
-        if (Password === confirmPassword) {
-            messageElement.style.color = "green";
-            messageElement.textContent = "Password match";
-            return true; // Allow form submission
-        } else {
-            messageElement.style.color = "red";
-            messageElement.textContent = "Password doesn't match";
-            return false; // Prevent form submission
-        }
+// Function to check if new passwords match in the change password form
+function checkPasswordMatch() {
+    const password = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("ConfirmPassword").value;
+    const messageElement = document.getElementById("password-match-message");
+
+    if (password === confirmPassword) {
+        messageElement.style.color = "green";
+        messageElement.textContent = "Password match";
+        return true; // Allow form submission
+    } else {
+        messageElement.style.color = "red";
+        messageElement.textContent = "Passwords do not match";
+        return false; // Prevent form submission
     }
+}

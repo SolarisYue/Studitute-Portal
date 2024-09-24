@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mobile = $_POST['Mobilenumber'];
     $info = $_POST['detailinformation'];
 
-    $updateStmt = $pdo->prepare("UPDATE users SET full_name = ?, email = ?, mobile_number = ?, profile_information = ? WHERE id = ?");
+    $updateStmt = $pdo->prepare("UPDATE users SET full_name = ?, email = ?, mobile_number = ?, profile_information = ? WHERE user_id = ?");
     if ($updateStmt->execute([$name, $email, $mobile, $info, $_SESSION['user_id']])) {
         $message = "Profile updated successfully.";
     } else {
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Fetch updated data from database regardless of POST or GET
-$stmt = $pdo->prepare("SELECT full_name, email, mobile_number, profile_information FROM users WHERE id = ?");
+$stmt = $pdo->prepare("SELECT full_name, email, mobile_number, profile_information FROM users WHERE user_id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
 

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = $_POST['ConfirmPassword'];
 
     // First, check if the old password is correct
-    $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT password FROM users WHERE user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($newPassword === $confirmPassword) {
             // Update the password in the database
             $newHash = password_hash($newPassword, PASSWORD_DEFAULT);
-            $updateStmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+            $updateStmt = $pdo->prepare("UPDATE users SET password = ? WHERE user_id = ?");
             if ($updateStmt->execute([$newHash, $_SESSION['user_id']])) {
                 $message = "Your password has been successfully updated.";
             } else {

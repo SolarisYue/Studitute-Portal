@@ -35,8 +35,8 @@ function getInitials($name) {
             </div>
         <?php else: ?>
             <a href="login.php">
-                <img class="guest" src="Guest.jpg" alt="Guest Profile Picture"><br>
-                <h3>Log In</h3>
+                <img class="guest" src="guest.png" alt="Guest Profile Picture"><br>
+                <h3 style="color: white">Log In</h3>
             </a>
         <?php endif; ?>
     </div>

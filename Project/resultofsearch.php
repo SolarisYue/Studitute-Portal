@@ -1,13 +1,11 @@
 <?php
-// Ensure the session is started and the user is logged in
-session_start();
+session_start(); // Start the session to ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login.php"); // Redirect to login if the user is not logged in
     exit();
 }
 
-// Include your database connection
-include 'database.php';
+include 'database.php'; // Include the database connection
 
 // Get search parameters from the form submission
 $institution_name = $_GET['Institutionname'] ?? '';
@@ -78,9 +76,20 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="design.css">
-    <script src="mywebscript.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" href="Favicon.png">
     <title>Result of Searching Institution - Studitute Portal</title>
+    <style>
+        .fav-btn {
+            background: none;
+            
+            cursor: pointer;
+            color: brown; /* Initial color of the heart */
+        }
+        .fav-btn.active {
+            color: red; /* Color when favorited */
+        }
+    </style>
 </head>
 <body>
 
@@ -100,43 +109,61 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Favorite</th>
         </tr>
         <?php
-        if ($results && count($results) > 0) {
-            $i = 1;
-            foreach ($results as $result) {
-                // Ensure 'institution_id' is accessed correctly from the $result array
-                $institution_id = htmlspecialchars($result['institution_id']);
-                $institution_name = htmlspecialchars($result['institution_name']);
-                $tution_fee = htmlspecialchars($result['tution_fee']);
-                $locations = htmlspecialchars($result['locations']);
-                $duration = htmlspecialchars($result['duration']);
-                $course_name = htmlspecialchars($result['course_name']);
-                $course_level = htmlspecialchars($result['course_level']);
-                
-                echo "<tr>
-                    <td>{$i}</td>
-                    <td><a href=\"detailsofinst.php?id={$institution_id}\" style=\"color:black\">{$institution_name}</a></td>
-                    <td>{$tution_fee}</td>
-                    <td>{$locations}</td>
-                    <td>{$duration}</td>
-                    <td>{$course_name}</td>
-                    <td>{$course_level}</td>
-                    <td class=\"fav-icon\">
-                        <button class=\"fav-btn\" data-id=\"{$institution_id}\" id=\"fav-btn-{$institution_id}\">
-                            <img class=\"fav-image\" src=\"FavD.png\" alt=\"Favorite\">
-                        </button>
-                    </td>
-                </tr>";
-                $i++;
-            }
-        } else {
-            echo "<tr><td colspan=\"8\">No results found.</td></tr>";
+        $i = 1;
+        foreach ($results as $result) {
+            echo "<tr>
+                <td>{$i}</td>
+                <td><a href=\"detailsofinst.php?id={$result['institution_id']}\" style=\"color:black\">{$result['institution_name']}</a></td>
+                <td>{$result['tution_fee']}</td>
+                <td>{$result['locations']}</td>
+                <td>{$result['duration']}</td>
+                <td>{$result['course_name']}</td>
+                <td>{$result['course_level']}</td>
+                <td class=\"fav-icon\">
+                    <button class=\"fav-btn\" data-id=\"{$result['institution_id']}\" id=\"fav-btn-{$result['institution_id']}\">
+                        <i class=\"far fa-heart\"></i> <!-- Empty heart -->
+                    </button>
+                </td>
+            </tr>";
+            $i++;
         }
         ?>
     </table>
     <p><a href="searchpage.php" style="color: black; text-decoration:underline;">Back to <strong>Search</strong></a></p>
 </div>
 
-<?php include 'footer.php'; // Include the footer file ?>
+<?php include 'footer.php'; // Include the footer ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.fav-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const institutionId = this.getAttribute('data-id');
+            addToFavorites(institutionId, this);
+        });
+    });
+});
+
+function addToFavorites(institutionId, button) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'addtofavourites.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                const icon = button.querySelector('i');
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                button.classList.add('active'); // Turn the heart red
+            } else {
+                alert(response.message);
+            }
+        }
+    };
+    xhr.send('institution_id=' + institutionId);
+}
+</script>
 
 </body>
 </html>

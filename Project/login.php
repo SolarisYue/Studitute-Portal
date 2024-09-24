@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         // Set session variables and redirect to homepage
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['user_name'] = $user['full_name'];
         header("Location: homepage.php"); // Make sure this file exists
         exit();
