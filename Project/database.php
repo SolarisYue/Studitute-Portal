@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'studitute_portal';
+$db = 'studituteportal';
 $user = 'root';
 $pass = '';  // Replace with your database password
 
