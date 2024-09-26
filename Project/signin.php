@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <div class="header">
-    <a href="homepage.html" class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
+    <a href="homepage.php" class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
     <div class="title-container">
       <div class="title">Studitute Portal</div>
       <p class="subtitle">Empowering your Educational Journey</p>
@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <nav>
     <ul class="nav-list">
-        <li class="nav-item"><a href="searchpage.html">Search</a></li>
-        <li class="nav-item"><a href="crosscredit.html">Cross Credit</a></li>
-        <li class="nav-item"><a href="fav.html">Favourites</a></li>
-        <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
+        <li class="nav-item"><a href="searchpage.php">Search</a></li>
+        <li class="nav-item"><a href="crosscredit.php">Cross Credit</a></li>
+        <li class="nav-item"><a href="fav.php">Favourites</a></li>
+        <li class="nav-item"><a href="contactus.php">Contact Us</a></li>
     </ul>
   </nav>
 

@@ -1,89 +1,175 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'database.php';
+
+$institution_id = isset($_GET['id']) ? $_GET['id'] : die('Error: Missing Institution ID.');
+$user_id = $_SESSION['user_id']; // Ensure $user_id is defined by getting it from the session
+
+$stmt = $pdo->prepare("SELECT institution_name, course_name, course_level, mode_of_study, locations, tution_fee, duration FROM database_institution WHERE institution_id = ?");
+$stmt->execute([$institution_id]);
+$institution = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$institution) {
+    echo "No details found for this institution.";
+    exit;
+}
+
+// Construct the title for the page
+$page_title = $institution['institution_name'] . "'s<br>" . $institution['course_name'];
+
+// Check if the institution is already a favorite
+$fav_stmt = $pdo->prepare("SELECT * FROM favourites WHERE user_id = ? AND institution_id = ?");
+$fav_stmt->execute([$user_id, $institution_id]);
+$is_favorite = $fav_stmt->rowCount() > 0; // true if favorite, false otherwise
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="design.css">
     <script src="mywebscript.js"></script>
     <link rel="icon" type="image/png" href="Favicon.png">
-    <title>Details of Institution - Studitute Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title><?php echo htmlspecialchars($page_title); ?> - Studitute Portal</title>
+    <style>
+        .institution-details {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .fav-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f1ff;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .fav-btn.active i {
+            color: red; /* Color when favorited */
+        }
+        .fav-btn i {
+            color: #ccc; /* Default color */
+        }
+        .course-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px; /* Space between grid items */
+            padding: 20px 0;
+        }
+        .course-info-item {
+            background-color: #f1f1ff; /* Light background */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .course-info-item strong {
+            display: block;
+            color: #2C3E50; /* Dark blue for text */
+            margin-bottom: 10px;
+        }
+        .program, .campus, .adminsreq {
+            background-color: #f1f1ff; /* Light blue background for a subtle look */
+            border: 1px solid #ddd; /* Maintaining a subtle border */
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="header">
-    <a href="homepage.html" class="logo-container"><img src="Logo.jpg" alt="Logo" class="logo"></a>
-    <div class="title-container">
-      <div class="title">Studitute Portal</div>
-      <p class="subtitle">Empowering your Educational Journey</p>
+<?php include 'header.php'; ?>
+
+<div class="content institution-details">
+    <h1><?php echo $page_title; ?>
+        <span class="fav-btn <?php echo $is_favorite ? 'active' : ''; ?>" onclick="toggleFavorite(<?php echo $institution_id; ?>, this)">
+            <i class="fa fa-heart"></i>
+        </span>
+    </h1>
+    
+    <div class="course-info-grid">
+        <div class="course-info-item">
+            <strong>Course Name:</strong>
+            <?php echo htmlspecialchars($institution['course_name']); ?>
+        </div>
+        <div class="course-info-item">
+            <strong>Tuition Fee:</strong>
+            $<?php echo number_format($institution['tution_fee'], 2); ?>
+        </div>
+        <div class="course-info-item">
+            <strong>Location:</strong>
+            <?php echo htmlspecialchars($institution['locations']); ?>
+        </div>
+        <div class="course-info-item">
+            <strong>Duration:</strong>
+            <?php echo htmlspecialchars($institution['duration']); ?> year(s)
+        </div>
+        <div class="course-info-item">
+            <strong>Mode of Study:</strong>
+            <?php echo htmlspecialchars($institution['mode_of_study']); ?>
+        </div>
+        <div class="course-info-item">
+            <strong>Level:</strong>
+            <?php echo htmlspecialchars($institution['course_level']); ?>
+        </div>
     </div>
-    <div class="profile">
-      <a href="login.html">
-        <img class="guest" src="Guest.jpg" alt="Guest pic"><br>
-        <h3>Log In</h3>
-      </a>
+
+    <div class="program">
+        <h2>About the Program</h2>
+        <p>This program provides students with a comprehensive understanding of the subject matter, preparing them for a successful career in the field. It focuses on practical skills and theoretical knowledge to ensure graduates are well-equipped to meet industry demands.</p>
     </div>
-  </div>
-
-  <nav>
-    <ul class="nav-list">
-        <li class="nav-item"><a href="searchpage.html">Search</a></li>
-        <li class="nav-item"><a href="crosscredit.html">Cross Credit</a></li>
-        <li class="nav-item"><a href="fav.html">Favourites</a></li>
-        <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <div class="content">
-    <div class="institution-details">
-        <h1>Victoria University</h1>
-        <p class="level"><strong>Level:</strong> 2</p>
-        <p><strong>Locations:</strong> Melbourne, Sydney, Canberra</p>
-        
-        <h2>Programs Offered</h2>
-        <div class="program">
-            <h3>Information Technology</h3>
-            <p><strong>Program:</strong> Bachelor of IT</p>
-            <p><strong>Duration:</strong> 3 years</p>
-            <p><strong>Tuition Fee:</strong> $14,500 per semester</p>
-            <p>A comprehensive program designed to equip students with advanced skills in software development, network security, and data management.</p>
-        </div>
-        <div class="program">
-            <h3>Hospitality and Culinary Arts</h3>
-            <p><strong>Program:</strong> Diploma of Cookery</p>
-            <p><strong>Duration:</strong> 2 years</p>
-            <p><strong>Tuition Fee:</strong> $13,500 per semester</p>
-            <p>This course offers hands-on culinary training, teaching students the art of cooking, kitchen management, and contemporary culinary techniques.</p>
-        </div>
-        <div class="program">
-            <h3>Accounting</h3>
-            <p><strong>Program:</strong> Bachelor of Accounting</p>
-            <p><strong>Duration:</strong> 3 years</p>
-            <p><strong>Tuition Fee:</strong> $8500 per semester</p>
-            <p>A thorough program that covers financial accounting, management accounting, auditing, and taxation, preparing students for various roles in the financial sector.</p>
-        </div>
-
-        <h2>Work Integrated Learning</h2>
-        <p>Victoria University prides itself on integrating practical experience with academic learning. Through its Work Integrated Learning (WIL) program, students have the opportunity to engage in real-world projects and internships, gaining valuable industry experience and professional connections.</p>
-
-        <h2>Campus Locations</h2>
-        <div class="campus">
-            <h3>Melbourne</h3>
-            <p>Located in the vibrant city of Melbourne, the campus offers a dynamic learning environment with access to a bustling tech and cultural scene.</p>
-        </div>
-        <div class="campus">
-            <h3>Sydney</h3>
-            <p>The Sydney campus provides a unique blend of urban living and academic excellence, situated in one of Australia's most iconic cities.</p>
-        </div>
-        <div class="campus">
-            <h3>Canberra</h3>
-            <p>In the heart of Australia’s capital, the Canberra campus offers a peaceful and focused academic setting, close to governmental and national institutions.</p>
-        </div>
-        <p><a href="resultofsearch.html" style="color: black; text-decoration:underline;">Back to <strong>Search Result</strong></a></p>
+    
+    <div class="campus">
+        <h2>Campus Facilities</h2>
+        <p>The campus boasts state-of-the-art facilities, including modern laboratories, libraries, and study spaces designed to enhance the learning experience and support student success.</p>
     </div>
-  </div>
+    
+    <div class="adminsreq">
+        <h2>Admission Requirements</h2>
+        <p>Applicants are expected to meet certain academic criteria and demonstrate a strong interest in the field. Specific requirements can vary, so prospective students should consult the university's admissions office for detailed information.</p>
+    </div>
+    
+    <p><a href="resultofsearch.php" style="color: black; text-decoration:underline;">Back to <strong>Search Results</strong></a></p>
+</div>
 
-  <div class="footer">
-    <p>&copy; Studitute Portal: Empowering your Educational Journey</p>
-  </div>
+<?php include 'footer.php'; ?>
+
+<script>
+function toggleFavorite(institutionId, element) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'toggle_favorite.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.favorited) {
+                element.classList.add('active');
+            } else {
+                element.classList.remove('active');
+            }
+        } else {
+            alert('Request failed. Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send('institution_id=' + institutionId);
+}
+</script>
 
 </body>
 </html>

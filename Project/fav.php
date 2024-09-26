@@ -70,7 +70,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><a href=\"detailsofinst.php?id={$fav['institution_id']}\" style=\"color:black\">{$fav['institution_name']}</a></td>
                 <td>{$fav['tution_fee']}</td>
                 <td>{$fav['locations']}</td>
-                <td>{$fav['duration']}</td>
+                <td>{$fav['duration']} year(s)</td>
                 <td>{$fav['course_name']}</td>
                 <td>{$fav['course_level']}</td>
                 <td class=\"fav-icon\">
