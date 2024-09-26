@@ -78,7 +78,7 @@ if (!$user) {
                     <button type="submit">Save Changes</button>
                 </div>
                 <div class="form-group">
-                    <a href="changepassword.php"><button type="button">Change Password</button></a>
+                    <a href="changepass.php"><button type="button">Change Password</button></a>
                 </div>
             </form>
             <p><a href="userprofile.php" style="color: black; text-decoration:underline;">Back to <strong>User Profile</strong></a></p>

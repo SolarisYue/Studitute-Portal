@@ -11,9 +11,9 @@ if (!isset($_SESSION['user_id'])) {
 $message = ''; // To store messages to display to the user
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $oldPassword = $_POST['Password'];
+    $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
-    $confirmPassword = $_POST['ConfirmPassword'];
+    $confirmPassword = $_POST['confirmPassword']; // Corrected the array key to match form field name
 
     // First, check if the old password is correct
     $stmt = $pdo->prepare("SELECT password FROM users WHERE user_id = ?");
@@ -58,21 +58,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($message)): ?>
             <p style="color: red;"><?php echo $message; ?></p>
         <?php endif; ?>
-        <form id="changepassword" action="changepassword.php" method="POST">
-            <div class="form-group">
-                <label for="Password">Old Password:</label>
-                <input type="password" id="Password" name="Password" required>
-            </div><br>
+        <form id="changepassword" action="changepass.php" method="POST">
+            <div class="form-group" id="old-password-group">
+                <label for="oldPassword">
+                    Old Password <span style="color: red;">*</span>
+                </label>
+                <div class="password-container">
+                    <input type="password" id="oldPassword" name="oldPassword" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('oldPassword', this)">
+                        <img src="ceye-icon.png" alt="Show Password">
+                    </span>
+                </div>
+            </div>
+            <br>
 
-            <div class="form-group">
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword" name="newPassword" required>
-            </div><br>
-
-            <div class="form-group">
-                <label for="ConfirmPassword">Confirm Password:</label>
-                <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
-            </div><br>
+            <div class="form-group" id="password-group">
+                <label for="newPassword">
+                   New Password <span style="color: red;">*</span>
+                </label>
+                <div class="password-container">
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', this)">
+                        <img src="ceye-icon.png" alt="Show Password">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" id="confirm-password-group">
+                <label for="confirmPassword">
+                   Confirm Password <span style="color: red;">*</span>
+                </label>
+                <div class="password-container">
+                    <input type="password" id="ConfirmPassword" name="confirmPassword" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">
+                        <img src="ceye-icon.png" alt="Show Password">
+                    </span>
+                </div>
+                <p id="password-match-message" style="color: red;"></p>
+            </div>
+            <br>
 
             <button type="submit">Change Password</button>
         </form>
